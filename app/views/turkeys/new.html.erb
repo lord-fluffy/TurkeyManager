@@ -1,0 +1,51 @@
+<!-- app/views/turkeys/new.html.erb -->
+<h1 class="mt-4 mb-4">New Turkey</h1>
+
+<%= form_with(model: @turkey, local: true, class: "needs-validation", novalidate: true) do |form| %>
+  <% if @turkey.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@turkey.errors.count, "error") %> prohibited this turkey from being saved:</h4>
+      <ul>
+        <% @turkey.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :age, class: "form-label" %>
+    <%= form.number_field :age, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :weight, class: "form-label" %>
+    <%= form.number_field :weight, step: 0.1, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :sex, class: "form-label" %>
+    <%= form.select :sex, %w[male female], { prompt: 'Select Status' }, class: "form-select", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :species, class: "form-label" %>
+    <%= form.select :species, ['Eastern Wild Turkey', 'Osceola Turkey', 'Rio Grande Turkey', 'Merriam\'s Turkey', 'Gould\'s Turkey', 'South Mexican Turkey', 'Ocellated Turkey'], { prompt: 'Select Status' }, class: "form-select", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.select :status, %w[wild semi-wild domesticated], { prompt: 'Select Status' }, class: "form-select", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Create Turkey", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to List', turkeys_path, class: "btn btn-secondary" %>

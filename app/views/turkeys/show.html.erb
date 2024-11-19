@@ -1,0 +1,18 @@
+<!-- app/views/turkeys/show.html.erb -->
+<h1 class="mt-4 mb-4">Turkey Details</h1>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <p><strong>Name:</strong> <%= @turkey.name %></p>
+    <p><strong>Age (months):</strong> <%= @turkey.age %></p>
+    <p><strong>Weight (lbs):</strong> <%= @turkey.weight %></p>
+    <p><strong>Sex:</strong> <%= @turkey.sex %></p>
+    <p><strong>Species:</strong> <%= @turkey.species %></p>
+    <p><strong>Status:</strong> <%= @turkey.status %></p>
+  </div>
+</div>
+
+<div class="mb-3">
+  <%= link_to 'Edit', edit_turkey_path(@turkey), class: "btn btn-warning" %>
+  <%= link_to 'Back to List', turkeys_path, class: "btn btn-secondary" %>
+</div>
